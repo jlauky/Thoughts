@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const IDLE_TIMEOUT = 10 * 60 * 1000;
 
+const DISABLE_IDLE_TIMEOUT = true;
+
 export function useIdleTimeout() {
   const navigate = useNavigate();
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

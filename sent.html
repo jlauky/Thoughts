@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughts — Sent</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    /* Starfield — same layers as index.html */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 90%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 60%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  45%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 15%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 30%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 18% 88%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 5%,  rgba(255,255,255,0.8) 0%, transparent 100%);
+      animation: twinkle 5s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      background-image:
+        radial-gradient(1px 1px at 25% 15%, rgba(200,220,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 65%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 25%, rgba(200,220,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 70%, rgba(200,220,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 12% 55%, rgba(200,220,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 38% 42%, rgba(200,220,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 95%, rgba(200,220,255,0.6) 0%, transparent 100%);
+      animation: twinkle 7s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* Floating particle released into the universe */
+    .particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(160, 180, 255, 0.8);
+      animation: float-away 6s ease-in forwards;
+      pointer-events: none;
+    }
+
+    @keyframes float-away {
+      0%   { transform: translateY(0) scale(1);   opacity: 0.9; }
+      100% { transform: translateY(-120vh) scale(0); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: min(480px, 92vw);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: fade-in 1.2s ease forwards;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1 {
+      color: #d0d8ff;
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    a.back {
+      display: inline-block;
+      padding: 10px 32px;
+      background: transparent;
+      border: 1px solid rgba(160, 180, 255, 0.4);
+      border-radius: 50px;
+      color: rgba(180, 200, 255, 0.8);
+      font-family: inherit;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    a.back:hover {
+      background: rgba(160, 180, 255, 0.12);
+      color: #e0e6ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="icon">✨</span>
+    <h1>Your thoughts are sent out<br>to the universe.</h1>
+    <a class="back" href="index.html">← Send another</a>
+  </div>
+
+  <script>
+    // Spawn a few floating particles to reinforce the "sent" feeling
+    function spawnParticle() {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.bottom = Math.random() * 20 + 'vh';
+      p.style.animationDelay = Math.random() * 3 + 's';
+      p.style.width = p.style.height = (Math.random() * 5 + 3) + 'px';
+      document.body.appendChild(p);
+      p.addEventListener('animationend', () => p.remove());
+    }
+
+    for (let i = 0; i < 12; i++) spawnParticle();
+  </script>
+</body>
+</html>

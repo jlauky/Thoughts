@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    /* Starfield */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 55%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 90%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 60%, rgba(255,255,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  45%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 15%, rgba(255,255,255,0.9) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 30%, rgba(255,255,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 18% 88%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 95% 5%,  rgba(255,255,255,0.8) 0%, transparent 100%);
+      animation: twinkle 5s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      background-image:
+        radial-gradient(1px 1px at 25% 15%, rgba(200,220,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 65%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 25%, rgba(200,220,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 70%, rgba(200,220,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 12% 55%, rgba(200,220,255,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 38% 42%, rgba(200,220,255,0.8) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 95%, rgba(200,220,255,0.6) 0%, transparent 100%);
+      animation: twinkle 7s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: min(520px, 92vw);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      color: #d0d8ff;
+      font-size: 1.6rem;
+      font-weight: normal;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      color: rgba(180, 190, 230, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: #e0e6ff;
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 14px 16px;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea::placeholder {
+      color: rgba(180, 190, 230, 0.4);
+    }
+
+    textarea:focus {
+      border-color: rgba(160, 180, 255, 0.5);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 40px;
+      background: linear-gradient(135deg, #5b6ee1, #8b60d6);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(91, 110, 225, 0.45);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(91, 110, 225, 0.6);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>What's on your mind?</h1>
+    <p class="subtitle">Let it out — no one is keeping score.</p>
+    <form id="thoughtForm">
+      <textarea
+        id="thought"
+        aria-label="Your thoughts"
+        placeholder="Type your thoughts here…"
+        autofocus
+      ></textarea>
+      <br />
+      <button type="submit">Send</button>
+    </form>
+    <script>
+      document.getElementById('thoughtForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = 'sent.html';
+      });
+    </script>
+  </div>
+</body>
+</html>
